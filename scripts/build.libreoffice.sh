@@ -31,7 +31,7 @@ build_libreoffice () {
 		echo
 
 		if [ "${LOC_LAST}" != "" ] ; then
-			sudo /bin/rm -rf ${LOOL_PREFIX}
+			sudo /bin/rm -rf ${LOOL_PREFIX}/lib/*office*
 			sudo /bin/rm -rf ${BUILD_DIR}/core-*
 		fi
 
