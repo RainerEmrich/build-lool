@@ -62,7 +62,7 @@ build_online () {
 		sudo make install | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
 		sudo make install DESTDIR="${BUILD_DIR}/install" | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
 
-		sudo tar -C ${BUILD_DIR}/install/opt/ -cvJf ${PKG_DIR}/loolwsd-${LOOL_VERSION}.tar.xz .
+		sudo tar -C ${BUILD_DIR}/install${LOOL_PREFIX}/ -cvJf ${PKG_DIR}/loolwsd-${LOOL_VERSION}.tar.xz .
 
 		sudo /bin/rm -rf ${BUILD_DIR}/install
 
