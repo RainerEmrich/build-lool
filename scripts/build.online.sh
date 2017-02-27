@@ -36,6 +36,7 @@ build_online () {
 		done
 		if [ -d ${LOOL_PREFIX}/etc ] ; then sudo /bin/rm -rf ${LOOL_PREFIX}/etc ; fi
 		if [ -d ${LOOL_PREFIX}/share/loolwsd ] ; then sudo /bin/rm -rf ${LOOL_PREFIX}/share/loolwsd ; fi
+		if [ -d ${LOOL_PREFIX}/var/www ] ; then sudo /bin/rm -rf ${LOOL_PREFIX}/var/www ; fi
 
 		cd ${BUILD_DIR}
 
