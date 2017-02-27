@@ -33,10 +33,10 @@ build_poco () {
 		if [ "${POCO_LAST}" != "" ] ; then
 			LIST="cpspc cpspcd  f2cpsp f2cpspd"
 			for BIN in ${LIST} ; do
-				if [ -f ${POCO_PREFIX}/bin/${BIN} ] ; then sudo /bin/rm ${POCO_PREFIX}/bin/${BIN} ; fi
+				if [ -f ${POCO_PREFIX}/bin/${BIN} ] ; then sudo /bin/rm -f ${POCO_PREFIX}/bin/${BIN} ; fi
 			done
 			if [ -d ${POCO_PREFIX}/include/Poco ] ; then sudo /bin/rm -rf ${POCO_PREFIX}/include/Poco ; fi
-			if [ -f ${POCO_PREFIX}/lib/libPoco* ] ; then sudo /bin/rm ${POCO_PREFIX}/lib/libPoco* ; fi
+			sudo find ${POCO_PREFIX}/lib -maxdepth 1 -name "libPoco*.so*" -exec /bin/rm -f {} \;
 		fi
 
 		cd ${BUILD_DIR}
