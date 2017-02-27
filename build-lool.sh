@@ -59,6 +59,7 @@ get_sources
 build_poco
 build_libreoffice
 build_online
+build_package
 
 
 test ! -z "$(grep "${MYSELF}" ~/.bashrc)" && sed --in-place "/${MYSELF_QUOTED}/d" ~/.bashrc
@@ -76,6 +77,9 @@ echo "# poco-${POCO_VERSION}.tar.xz"
 echo "# core-${LOC_VERSION}.tar.xz"
 echo "# loolwsd-${LOOL_VERSION}.tar.xz"
 echo "# loleaflet-${LOOL_VERSION}.tar.gz"
+echo "#"
+echo "# Single archive for simple installation:"
+echo "# ${PACKAGE_NAME}.tar.xz"
 echo "#"
 echo "#######################################################################################"
 echo

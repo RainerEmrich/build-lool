@@ -28,3 +28,4 @@
 . ${SCRIPT_DIR}/build.poco.sh
 . ${SCRIPT_DIR}/build.libreoffice.sh
 . ${SCRIPT_DIR}/build.online.sh
+. ${SCRIPT_DIR}/build.package.sh

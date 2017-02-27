@@ -38,8 +38,13 @@ get_config () {
 	if [[ "${LOC_PKG}" == "1" && "${LOC_LAST}" == "${LOC_VERSION}" ]] ; then export LIBREOFFICE_BUILD="1" ; fi
 
 	export LOOL_PKG=$(test -f "${PKG_DIR}/loolwsd-${LOOL_VERSION}.tar.xz" && test -f "${PKG_DIR}/loleaflet-${LOOL_VERSION}.tar.gz" && echo "1")
-	export LOOL_LAST=$(test -f "cat ${STAMP_DIR}/online_build" && cat ${STAMP_DIR}/online_build)
+	export LOOL_LAST=$(test -f "${STAMP_DIR}/online_build" && cat ${STAMP_DIR}/online_build)
 	export ONLINE_BUILD="0"
 	if [[ "${POCO_BUILD}" == "1" && "${LIBREOFFICE_BUILD}" == "1" && "${LOOL_PKG}" == "1" && "${LOOL_LAST}" == "${LOOL_VERSION}" ]] ; then export ONLINE_BUILD="1" ; fi
+
+	export PACKAGE_NAME="lool-poco-${POCO_VERSION}-core-${LOC_VERSION}-online-${LOOL_VERSION}"
+	export PACKAGE_LAST=$(test -f "${STAMP_DIR}/package_build" && cat ${STAMP_DIR}/package_build)
+	export PACKAGE_BUILD="0"
+	if [[ "${PACKAGE_NAME}" == "${PACKAGE_LAST}" ]] ; then export LIBREOFFICE_BUILD="1" ; fi
 
 }
