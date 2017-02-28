@@ -44,7 +44,9 @@ build_online () {
 
 		cd online-${LOOL_VERSION}
 
-		DISTRO=$(ls -1 ${LOOL_PREFIX}/lib/ | grep office)
+		sed --in-place "s#POCOLIBDIRS=\"/usr/local/lib /opt/poco/lib\"#POCOLIBDIRS=\"/usr/local/lib /opt/poco/lib ${POCO_PREFIX}/lib\"#" loolwsd-systemplate-setup
+
+		DISTRO="$(basename $(find ${LOOL_PREFIX}/lib -maxdepth 1 -type d -name "*office"))"
 
 		./autogen.sh | tee ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
 
