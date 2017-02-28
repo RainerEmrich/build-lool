@@ -42,7 +42,7 @@ upgrade_system () {
 
 		sudo apt-get install libiodbc2 libiodbc2-dev -y
 
-		sudo apt-get install  libpcap0.8 libpcap0.8-dev libcunit1 libcunit1-dev libcap-dev npm nodejs-legacy python-polib python3-polib -y
+		sudo apt-get install libcunit1 libcunit1-dev libcap-dev npm nodejs-legacy python-polib python3-polib -y
 
 		sudo npm install -g jake
 
