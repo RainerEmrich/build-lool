@@ -21,3 +21,6 @@ and loleaflet-2.0.2-3.tar.gz.
 You may use these packages to install libreoffice online in /opt/lool
 or you may use the single package for simple installation:
 lool-poco-1.7.7-core-cp-5.1-17-online-2.0.2-3.tar.xz
+
+If you change source versions after a first build, only the necessary
+components are rebuild.
