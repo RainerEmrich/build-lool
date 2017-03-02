@@ -44,7 +44,7 @@ build_online () {
 
 		cd online-${LOOL_VERSION}
 
-		sed --in-place "s#POCOLIBDIRS=\"/usr/local/lib /opt/poco/lib\"#POCOLIBDIRS=\"/usr/local/lib /opt/poco/lib ${POCO_PREFIX}/lib\"#" loolwsd-systemplate-setup
+		sed --in-place "s#POCOLIBDIRS=\"/usr/local/lib /opt/poco/lib\"#POCOLIBDIRS=\"${POCO_PREFIX}/lib\"#" loolwsd-systemplate-setup
 
 		DISTRO="$(basename $(find ${LOOL_PREFIX}/lib -maxdepth 1 -type d -name "*office"))"
 
