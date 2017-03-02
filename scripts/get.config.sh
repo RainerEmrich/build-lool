@@ -21,6 +21,31 @@
 
 get_config () {
 
+	MY_CONFIG_SCRIPTS="lool-config.sh"
+	MISSING_SCRIPTS="#"
+	for SCRIPT in ${MY_CONFIG_SCRIPTS} ; do
+		if [ ! -f ${CONFIG_DIR}/${SCRIPT} ] ; then
+			MISSING_SCRIPTS="${MISSING_SCRIPTS}\n#\t${CONFIG_DIR}/${SCRIPT}"
+		fi
+	done
+
+	if [ "${MISSING_SCRIPTS}" != "#" ] ; then
+		echo
+		echo "#######################################################################################"
+		echo "#"
+		echo "# ERROR: The following configuration scripts are missing:"
+		echo -e "${MISSING_SCRIPTS}"
+		echo "#"
+		echo "#        Please copy from the Example File(s) in the configuration directory"
+		echo "#        ${CONFIG_DIR}"
+		echo "#        and adjust to your needs."
+		echo "#"
+		echo "#######################################################################################"
+		echo
+
+		exit
+	fi
+
 	. ${CONFIG_DIR}/lool-config.sh
 
 	if [[ "${POCO_PREFIX}" == "" ]] ; then export POCO_PREFIX="${LOOL_PREFIX}" ; fi
@@ -45,6 +70,6 @@ get_config () {
 	export PACKAGE_NAME="lool-poco-${POCO_VERSION}-core-${LOC_VERSION}-online-${LOOL_VERSION}"
 	export PACKAGE_LAST=$(test -f "${STAMP_DIR}/package_build" && cat ${STAMP_DIR}/package_build)
 	export PACKAGE_BUILD="0"
-	if [[ "${PACKAGE_NAME}" == "${PACKAGE_LAST}" ]] ; then export LIBREOFFICE_BUILD="1" ; fi
+	if [[ "${PACKAGE_NAME}" == "${PACKAGE_LAST}" ]] ; then export PACKAGE_BUILD="1" ; fi
 
 }

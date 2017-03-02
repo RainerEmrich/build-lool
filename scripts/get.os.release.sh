@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Source the scripts to setup the functions
+# Get the OS Release.
 #
 # Copyright 2017 Rainer Emrich, <rainer@emrich-ebersheim.de>
 #
@@ -19,15 +19,10 @@
 # <http://www.gnu.org/licenses/>.
 #
 
-. ${SCRIPT_DIR}/get.os.release.sh
-. ${SCRIPT_DIR}/test.os.release.sh
-. ${SCRIPT_DIR}/get.config.sh
-. ${SCRIPT_DIR}/show.info.sh
-. ${SCRIPT_DIR}/ask.to.continue.sh
-. ${SCRIPT_DIR}/pause.sh
-. ${SCRIPT_DIR}/upgrade.system.sh
-. ${SCRIPT_DIR}/get.sources.sh
-. ${SCRIPT_DIR}/build.poco.sh
-. ${SCRIPT_DIR}/build.libreoffice.sh
-. ${SCRIPT_DIR}/build.online.sh
-. ${SCRIPT_DIR}/build.package.sh
+get_os_release () {
+
+	export DIST_ID="$(lsb_release -si)"
+	export DIST_RELEASE="$(lsb_release -sr)"
+	export DIST_CODENAME="$(lsb_release -sc)"
+
+}

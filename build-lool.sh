@@ -42,6 +42,8 @@ if [ ! -d ${STAMP_DIR} ] ; then mkdir -p ${STAMP_DIR} ; fi
 
 . ${SCRIPT_DIR}/setup.functions.sh
 
+get_os_release
+test_os_release
 
 get_config
 show_info
