@@ -41,6 +41,7 @@ build_package () {
 		sudo /bin/cp -a ${LOOL_PREFIX}/var/www/loleaflet/dist/l10n ${LOOL_PREFIX}/var/www/loleaflet/dist/admin/
 		sudo chown -R root:root ${LOOL_PREFIX}/var/www/loleaflet
 		sudo chmod -R g-w,o-w ${LOOL_PREFIX}/var/www/loleaflet
+		sudo /bin/cp -a ${LOOL_PREFIX}/share/loolwsd/* ${LOOL_PREFIX}/var/www/
 		sudo tar -C ${LOOL_PREFIX}/ -cvJf ${PKG_DIR}/${PACKAGE_NAME}.tar.xz .
 
 		echo "${PACKAGE_NAME}" >${STAMP_DIR}/package_build
