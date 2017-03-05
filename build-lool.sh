@@ -37,6 +37,9 @@ if [ ! -d ${BUILD_DIR} ] ; then mkdir -p ${BUILD_DIR} ; fi
 if [ ! -d ${LOG_DIR} ] ; then mkdir -p ${LOG_DIR} ; fi
 if [ ! -d ${PKG_DIR} ] ; then mkdir -p ${PKG_DIR} ; fi
 if [ ! -d ${SRC_DIR} ] ; then mkdir -p ${SRC_DIR} ; fi
+if [ ! -d ${SRC_DIR}/poco ] ; then mkdir -p ${SRC_DIR}/poco ; fi
+if [ ! -d ${SRC_DIR}/core ] ; then mkdir -p ${SRC_DIR}/core ; fi
+if [ ! -d ${SRC_DIR}/online ] ; then mkdir -p ${SRC_DIR}/online ; fi
 if [ ! -d ${STAMP_DIR} ] ; then mkdir -p ${STAMP_DIR} ; fi
 
 

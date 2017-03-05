@@ -41,7 +41,7 @@ build_poco () {
 
 		cd ${BUILD_DIR}
 
-		tar xvf ${SRC_DIR}/poco-${POCO_VERSION}-all.tar.gz
+		tar xvf ${SRC_DIR}/poco/poco-${POCO_VERSION}-all.tar.gz
 		cd poco-${POCO_VERSION}-all
 
 		./configure --prefix=${POCO_PREFIX} | tee ${LOG_DIR}/poco-${POCO_VERSION}-all.log 2>&1

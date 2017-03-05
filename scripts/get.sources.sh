@@ -29,10 +29,13 @@ get_sources () {
 	echo "#######################################################################################"
 	echo
 
-	cd ${SRC_DIR}
-
+	cd ${SRC_DIR}/poco
 	if [ ! -f "poco-${POCO_VERSION}-all.tar.gz" ] ; then wget https://pocoproject.org/releases/poco-${POCO_VERSION}/poco-${POCO_VERSION}-all.tar.gz ; fi
+
+	cd ${SRC_DIR}/core
 	if [ ! -f "${LOC_VERSION}.tar.gz" ] ; then wget https://github.com/LibreOffice/core/archive/${LOC_VERSION}.tar.gz ; fi
+
+	cd ${SRC_DIR}/online
 	if [ ! -f "${LOOL_VERSION}.tar.gz" ] ; then wget https://github.com/LibreOffice/online/archive/${LOOL_VERSION}.tar.gz ; fi
 
 	cd ${START_DIR}

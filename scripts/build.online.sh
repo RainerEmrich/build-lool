@@ -35,23 +35,23 @@ build_online () {
 			if [ -f ${LOOL_PREFIX}/bin/${BIN} ] ; then sudo /bin/rm -rf ${LOOL_PREFIX}/bin/${BIN} ; fi
 		done
 		if [ -d ${LOOL_PREFIX}/etc ] ; then sudo /bin/rm -rf ${LOOL_PREFIX}/etc ; fi
-		if [ -d ${LOOL_PREFIX}/share/loolwsd ] ; then sudo /bin/rm -rf ${LOOL_PREFIX}/share/loolwsd ; fi
+		if [ -d ${LOOL_PREFIX}/share ] ; then sudo /bin/rm -rf ${LOOL_PREFIX}/share ; fi
 		if [ -d ${LOOL_PREFIX}/var/www ] ; then sudo /bin/rm -rf ${LOOL_PREFIX}/var/www ; fi
 
 		cd ${BUILD_DIR}
 
-		tar xvf ${SRC_DIR}/${LOOL_VERSION}.tar.gz
+		tar xvf ${SRC_DIR}/online/${LOOL_VERSION}.tar.gz
 
 		cd online-${LOOL_VERSION}
 
 		sed --in-place "s#POCOLIBDIRS=\"/usr/local/lib /opt/poco/lib\"#POCOLIBDIRS=\"${POCO_PREFIX}/lib\"#" loolwsd-systemplate-setup
 
-		DISTRO="$(basename $(find ${LOOL_PREFIX}/lib -maxdepth 1 -type d -name "*office"))"
+		LOC_DISTRO="$(basename $(find ${LOOL_PREFIX}/lib -maxdepth 1 -type d -name "*office"))"
 
 		./autogen.sh | tee ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
 
 		./configure --prefix=${LOOL_PREFIX} --with-poco-includes=${POCO_PREFIX}/include --with-poco-libs=${POCO_PREFIX}/lib --with-lokit-path=../core-${LOC_VERSION}/include \
-				--with-lo-path=${LOOL_PREFIX}/lib/${DISTRO} --with-logfile=${LOOL_PREFIX}/var/log/loolwsd/loolwsd.log | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
+				--with-lo-path=${LOOL_PREFIX}/lib/${LOC_DISTRO} --with-logfile=${LOOL_PREFIX}/var/log/loolwsd/loolwsd.log | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
 
 		make -j 4 | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
 		if [ $? -eq 2 ] ; then

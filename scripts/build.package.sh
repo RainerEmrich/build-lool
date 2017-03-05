@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Build an installable package including all neccessary components as tar archive.
+# Build an installable package including all necessary components as tar archive.
 #
 # Copyright 2017 Rainer Emrich, <rainer@emrich-ebersheim.de>
 #
@@ -25,7 +25,7 @@ build_package () {
 		echo
 		echo "#######################################################################################"
 		echo "#"
-		echo "# Build an installable package including all neccessary components as tar archive."
+		echo "# Build an installable package including all necessary components as tar archive."
 		echo "#"
 		echo "#######################################################################################"
 		echo
@@ -33,7 +33,6 @@ build_package () {
 		cd ${START_DIR}
 
 		sudo mkdir -p ${LOOL_PREFIX}/var/www
-
 		sudo tar -C ${LOOL_PREFIX}/var/www/ -xvf ${PKG_DIR}/loleaflet-${LOOL_VERSION}.tar.gz
 		sudo /bin/mv ${LOOL_PREFIX}/var/www/loleaflet-* ${LOOL_PREFIX}/var/www/loleaflet
 		sudo touch ${LOOL_PREFIX}/var/www/loleaflet/dist/branding.css
@@ -41,7 +40,9 @@ build_package () {
 		sudo /bin/cp -a ${LOOL_PREFIX}/var/www/loleaflet/dist/l10n ${LOOL_PREFIX}/var/www/loleaflet/dist/admin/
 		sudo chown -R root:root ${LOOL_PREFIX}/var/www/loleaflet
 		sudo chmod -R g-w,o-w ${LOOL_PREFIX}/var/www/loleaflet
-		sudo /bin/cp -a ${LOOL_PREFIX}/share/loolwsd/* ${LOOL_PREFIX}/var/www/
+
+		LOOL_DISTRO="$(ls -1 ${LOOL_PREFIX}/etc)"
+		sudo /bin/cp -a ${LOOL_PREFIX}/share/${LOOL_DISTRO}/* ${LOOL_PREFIX}/var/www/
 		sudo tar -C ${LOOL_PREFIX}/ -cvJf ${PKG_DIR}/${PACKAGE_NAME}.tar.xz .
 
 		echo "${PACKAGE_NAME}" >${STAMP_DIR}/package_build
