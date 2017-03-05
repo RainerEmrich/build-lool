@@ -25,6 +25,7 @@
 . ${SCRIPT_DIR}/show.info.sh
 . ${SCRIPT_DIR}/ask.to.continue.sh
 . ${SCRIPT_DIR}/pause.sh
+. ${SCRIPT_DIR}/enable.source.repositories.sh
 . ${SCRIPT_DIR}/upgrade.system.sh
 . ${SCRIPT_DIR}/get.sources.sh
 . ${SCRIPT_DIR}/build.poco.sh

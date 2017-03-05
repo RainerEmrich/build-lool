@@ -59,6 +59,7 @@ if [ "${UPGRADE_DONE}" != "1" ] ; then
 fi
 
 
+enable_source_repositories
 upgrade_system
 get_sources
 build_poco
