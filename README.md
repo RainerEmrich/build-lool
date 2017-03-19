@@ -7,8 +7,8 @@ libreoffice and libreoffice online.
 ## Requirements
 
 A minimal or standard installation of Ubuntu 16.04 as VM or on real
-Hardware is required. For flawless building, the folowing system resources
-are recomended:
+Hardware is required. For flawless building, the following system resources
+are recommended:
 
 * Disk space: >= 32 GByte
 * Memory: >= 4 GByte
