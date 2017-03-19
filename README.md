@@ -10,9 +10,9 @@ A minimal or standard installation of Ubuntu 16.04 as VM or on real
 Hardware is required. For flawless building the system resources are
 recomended:
 
-Disk space: >= 32 GByte
-Memory: >= 4 GByte
-Number of CPU cores: >= 4
+* Disk space: >= 32 GByte
+* Memory: >= 4 GByte
+* Number of CPU cores: >= 4
 
 Additionally you need an user account with sudo capability.
 
