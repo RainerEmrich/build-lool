@@ -1,11 +1,19 @@
 # build-lool
-Script collection to build libreoffice online on ubuntu 16.04.
 
-Updates the system, installs and sets up the required packages.
-Finally builds libreoffice and libreoffice online.
+Script collection to build libreoffice online on ubuntu 16.04. Updates
+the system, installs and sets up the required packages. Finally builds
+libreoffice and libreoffice online.
 
-Before you start please customize the configuration in
-config/lool-config.sh.
+## Requirements
+
+You need an Ubuntu 16.04. instance as VM or on real Hardware.
+A user account with sudo capability.
+
+## Configuration
+
+Before you start please customize the configuration.
+Copy config/lool-config.sh.example to config/lool-config.sh.
+Adjust config/lool-config.sh to your needs.
 
 You may define different versions for poco, libreoffice core and
 libreoffice online. The current settings are tested by me.
