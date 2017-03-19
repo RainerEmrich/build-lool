@@ -7,7 +7,7 @@ libreoffice and libreoffice online.
 ## Requirements
 
 You need an Ubuntu 16.04. instance as VM or on real Hardware.
-A user account with sudo capability.
+An user account with sudo capability.
 
 ## Configuration
 
