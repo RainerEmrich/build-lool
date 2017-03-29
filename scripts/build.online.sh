@@ -71,7 +71,7 @@ build_online () {
 
 		cd loleaflet
 
-		sudo make dist | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
+		sudo make -j ${NUM_PROC} dist | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
 		if [ $? -eq 2 ] ; then
 			echo
 			echo "ERROR: see ${LOG_DIR}/online-${LOOL_VERSION}.log!"
