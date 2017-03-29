@@ -42,7 +42,7 @@ build_libreoffice () {
 
 		echo "lo_sources_ver=${LOC_VERSION}" >sources.ver
 
-		./autogen.sh --prefix=${LOOL_PREFIX} --enable-release-build --without-help --without-myspell-dicts --with-parallelism | tee ${LOG_DIR}/core-${LOC_VERSION}.log 2>&1
+		./autogen.sh --prefix=${LOOL_PREFIX} --enable-release-build --without-help --without-myspell-dicts --without-doxygen --with-parallelism | tee ${LOG_DIR}/core-${LOC_VERSION}.log 2>&1
 
 		make fetch
 		if [ $? -eq 2 ] ; then
