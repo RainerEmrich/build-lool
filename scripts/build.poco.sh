@@ -46,7 +46,7 @@ build_poco () {
 
 		./configure --prefix=${POCO_PREFIX} | tee ${LOG_DIR}/poco-${POCO_VERSION}-all.log 2>&1
 
-		make -j 4 | tee -a ${LOG_DIR}/poco-${POCO_VERSION}-all.log 2>&1
+		make -j ${NUM_PROC} | tee -a ${LOG_DIR}/poco-${POCO_VERSION}-all.log 2>&1
 		if [ $? -eq 2 ] ; then
 			echo
 			echo "ERROR: see ${LOG_DIR}/poco-${POCO_VERSION}-all.log!"

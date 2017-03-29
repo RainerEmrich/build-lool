@@ -50,6 +50,8 @@ get_config () {
 
 	if [[ "${POCO_PREFIX}" == "" ]] ; then export POCO_PREFIX="${LOOL_PREFIX}" ; fi
 
+	export NUM_PROC=$(cat /proc/cpuinfo | grep processor | wc -l)
+
 	export UPGRADE_DONE=$(test -f "${STAMP_DIR}/upgrade_done" && echo "1")
 
 	export POCO_PKG=$(test -f "${PKG_DIR}/poco-${POCO_VERSION}.tar.xz" && echo "1")
