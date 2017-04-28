@@ -52,6 +52,7 @@ get_config () {
 
 	export NUM_PROC=$(cat /proc/cpuinfo | grep processor | wc -l)
 
+	export ENABLE_SOURCE_REPOSITORIES_DONE=$(test -f "${STAMP_DIR}/enable_source_repositories_done" && echo "1")
 	export UPGRADE_DONE=$(test -f "${STAMP_DIR}/upgrade_done" && echo "1")
 
 	export POCO_PKG=$(test -f "${PKG_DIR}/poco-${POCO_VERSION}.tar.xz" && echo "1")
