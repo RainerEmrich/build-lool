@@ -69,18 +69,24 @@ build_online () {
 
 		sudo /bin/rm -rf ${BUILD_DIR}/install
 
-		cd loleaflet
+		case $LOOL_VERSION in
+		2.1*)
+			;;
+		*)
+			cd loleaflet
 
-		sudo make -j ${NUM_PROC} dist | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
-		if [ $? -eq 2 ] ; then
-			echo
-			echo "ERROR: see ${LOG_DIR}/online-${LOOL_VERSION}.log!"
-			echo "Exiting..."
-			echo
-			exit
-		fi
+			sudo make -j ${NUM_PROC} dist | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
+			if [ $? -eq 2 ] ; then
+				echo
+				echo "ERROR: see ${LOG_DIR}/online-${LOOL_VERSION}.log!"
+				echo "Exiting..."
+				echo
+				exit
+			fi
 
-		sudo /bin/mv loleaflet-*.tar.gz ${PKG_DIR}/loleaflet-${LOOL_VERSION}.tar.gz
+			sudo /bin/mv loleaflet-*.tar.gz ${PKG_DIR}/loleaflet-${LOOL_VERSION}.tar.gz
+			;;
+		esac
 
 		cd ${BUILD_DIR}
 

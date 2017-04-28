@@ -42,6 +42,8 @@ build_libreoffice () {
 
 		echo "lo_sources_ver=${LOC_VERSION}" >sources.ver
 
+		sed --in-place 's/^CollaboraOffice/LibreOffice/' instsetoo_native/util/openoffice.lst.in
+
 		./autogen.sh --prefix=${LOOL_PREFIX} --enable-release-build --without-help --without-myspell-dicts --without-doxygen --with-parallelism | tee ${LOG_DIR}/core-${LOC_VERSION}.log 2>&1
 
 		make fetch

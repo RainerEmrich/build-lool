@@ -30,20 +30,20 @@ tested and known to work:
 Package            | version
 -------------------|---------------------
 poco               | 1.7.7
-libreoffice core   | cp-5.1.17
+libreoffice core   | cp-5.1-17
 libreoffice online | 2.0.2-3
 
 
 Package            | version
 -------------------|---------------------
 poco               | 1.7.8
-libreoffice core   | cp-5.1.18
+libreoffice core   | cp-5.1-18
 libreoffice online | 2.0.3
 
 Package            | version
 -------------------|---------------------
 poco               | 1.7.8
-libreoffice core   | cp-5.1.21
+libreoffice core   | cp-5.1-21
 libreoffice online | 2.0.4
 
 Package            | version
@@ -55,14 +55,20 @@ libreoffice online | libreoffice-5.3.1.2
 Package            | version
 -------------------|---------------------
 poco               | 1.7.8
-libreoffice core   | cp-5.1.23
+libreoffice core   | cp-5.1-23
 libreoffice online | 2.0.5
 
 Package            | version
 -------------------|---------------------
 poco               | 1.7.8
-libreoffice core   | cp-5.1.24
+libreoffice core   | cp-5.1-24
 libreoffice online | 2.0.6
+
+Package            | version
+-------------------|---------------------
+poco               | 1.7.8
+libreoffice core   | cp-5.3-8
+libreoffice online | 2.1-rc4
 
 It's recommended to leave LOOL_PREFIX as "/opt/lool" and POCO_PREFIX empty.
 
@@ -89,12 +95,13 @@ After login again:
 * Build libreoffice online.
 * Build installable package.
 
-After the script has finished you find the built packages in the subdirectory
-"packages".
+After the script has finished you find the built packages in the subdirectory "packages".
 There are packages for poco, libreoffice core, loolwsd and loleaflet. Depending
 on the configuration you will find poco-1.7.7.tar.xz, core-cp-5.1-17.tar.xz,
 loolwsd-2.0.2-3.tar.xz, loleaflet-2.0.2-3.tar.gz and a combined package
 lool-poco-1.7.7-core-cp-5.1-17-online-2.0.2-3.tar.xz to be installed to "/opt/lool".
+For the Collabora LibreOffice Online 2.1 versions there's no seperate loleaflet
+package.
 
 If you change source versions after a first build, only the necessary
 components are rebuild.

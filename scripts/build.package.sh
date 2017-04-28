@@ -32,17 +32,24 @@ build_package () {
 
 		cd ${START_DIR}
 
+		LOOL_DISTRO="$(ls -1 ${LOOL_PREFIX}/etc)"
 		sudo mkdir -p ${LOOL_PREFIX}/var/www
-		sudo tar -C ${LOOL_PREFIX}/var/www/ -xvf ${PKG_DIR}/loleaflet-${LOOL_VERSION}.tar.gz
-		sudo /bin/mv ${LOOL_PREFIX}/var/www/loleaflet-* ${LOOL_PREFIX}/var/www/loleaflet
+
+		case $LOOL_VERSION in
+		2.1*)
+			;;
+		*)
+			sudo tar -C ${LOOL_PREFIX}/var/www/ -xvf ${PKG_DIR}/loleaflet-${LOOL_VERSION}.tar.gz
+			sudo /bin/mv ${LOOL_PREFIX}/var/www/loleaflet-* ${LOOL_PREFIX}/var/www/loleaflet
+			;;
+		esac
+		sudo /bin/mv ${LOOL_PREFIX}/share/${LOOL_DISTRO}/* ${LOOL_PREFIX}/var/www/
 		sudo touch ${LOOL_PREFIX}/var/www/loleaflet/dist/branding.css
 		sudo touch ${LOOL_PREFIX}/var/www/loleaflet/dist/branding.js
 		sudo /bin/cp -a ${LOOL_PREFIX}/var/www/loleaflet/dist/l10n ${LOOL_PREFIX}/var/www/loleaflet/dist/admin/
 		sudo chown -R root:root ${LOOL_PREFIX}/var/www/loleaflet
 		sudo chmod -R g-w,o-w ${LOOL_PREFIX}/var/www/loleaflet
 
-		LOOL_DISTRO="$(ls -1 ${LOOL_PREFIX}/etc)"
-		sudo /bin/cp -a ${LOOL_PREFIX}/share/${LOOL_DISTRO}/* ${LOOL_PREFIX}/var/www/
 		sudo tar -C ${LOOL_PREFIX}/ -cvJf ${PKG_DIR}/${PACKAGE_NAME}.tar.xz .
 
 		echo "${PACKAGE_NAME}" >${STAMP_DIR}/package_build

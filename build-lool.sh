@@ -82,7 +82,15 @@ echo "# Built packages:"
 echo "# poco-${POCO_VERSION}.tar.xz"
 echo "# core-${LOC_VERSION}.tar.xz"
 echo "# loolwsd-${LOOL_VERSION}.tar.xz"
-echo "# loleaflet-${LOOL_VERSION}.tar.gz"
+
+case $LOOL_VERSION in
+2.1*)
+	;;
+*)
+	echo "# loleaflet-${LOOL_VERSION}.tar.gz"
+	;;
+esac
+
 echo "#"
 echo "# Single archive for simple installation:"
 echo "# ${PACKAGE_NAME}.tar.xz"
