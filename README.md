@@ -67,8 +67,8 @@ libreoffice online | 2.0.6
 Package            | version
 -------------------|---------------------
 poco               | 1.7.8
-libreoffice core   | cp-5.3-8
-libreoffice online | 2.1-rc4
+libreoffice core   | cp-5.3-10
+libreoffice online | 2.1.0
 
 It's recommended to leave LOOL_PREFIX as "/opt/lool" and POCO_PREFIX empty.
 
