@@ -70,9 +70,12 @@ build_online () {
 		sudo /bin/rm -rf ${BUILD_DIR}/install
 
 		case $LOOL_VERSION in
-		2.1*)
-			;;
-		*)
+		1.* | \
+		2.0* | \
+		libreoffice-5.3.0* | \
+		libreoffice-5.3.1* | \
+		libreoffice-5.3.2* | \
+		libreoffice-5.3.3*)
 			cd loleaflet
 
 			sudo make -j ${NUM_PROC} dist | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
@@ -85,6 +88,8 @@ build_online () {
 			fi
 
 			sudo /bin/mv loleaflet-*.tar.gz ${PKG_DIR}/loleaflet-${LOOL_VERSION}.tar.gz
+			;;
+		*)
 			;;
 		esac
 

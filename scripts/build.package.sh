@@ -36,14 +36,21 @@ build_package () {
 		sudo mkdir -p ${LOOL_PREFIX}/var/www
 
 		case $LOOL_VERSION in
-		2.1*)
-			;;
-		*)
+		1.* | \
+		2.0* | \
+		libreoffice-5.3.0* | \
+		libreoffice-5.3.1* | \
+		libreoffice-5.3.2* | \
+		libreoffice-5.3.3*)
 			sudo tar -C ${LOOL_PREFIX}/var/www/ -xvf ${PKG_DIR}/loleaflet-${LOOL_VERSION}.tar.gz
 			sudo /bin/mv ${LOOL_PREFIX}/var/www/loleaflet-* ${LOOL_PREFIX}/var/www/loleaflet
+			sudo /bin/cp ${LOOL_PREFIX}/share/${LOOL_DISTRO}/* ${LOOL_PREFIX}/var/www/
+			;;
+		*)
+			sudo /bin/mv ${LOOL_PREFIX}/share/${LOOL_DISTRO}/* ${LOOL_PREFIX}/var/www/
 			;;
 		esac
-		sudo /bin/mv ${LOOL_PREFIX}/share/${LOOL_DISTRO}/* ${LOOL_PREFIX}/var/www/
+
 		sudo touch ${LOOL_PREFIX}/var/www/loleaflet/dist/branding.css
 		sudo touch ${LOOL_PREFIX}/var/www/loleaflet/dist/branding.js
 		sudo /bin/cp -a ${LOOL_PREFIX}/var/www/loleaflet/dist/l10n ${LOOL_PREFIX}/var/www/loleaflet/dist/admin/

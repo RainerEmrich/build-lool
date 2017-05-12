@@ -84,10 +84,15 @@ echo "# core-${LOC_VERSION}.tar.xz"
 echo "# loolwsd-${LOOL_VERSION}.tar.xz"
 
 case $LOOL_VERSION in
-2.1*)
+1.* | \
+2.0* | \
+libreoffice-5.3.0* | \
+libreoffice-5.3.1* | \
+libreoffice-5.3.2* | \
+libreoffice-5.3.3*)
+	echo "# loleaflet-${LOOL_VERSION}.tar.gz"
 	;;
 *)
-	echo "# loleaflet-${LOOL_VERSION}.tar.gz"
 	;;
 esac
 
