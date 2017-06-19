@@ -27,36 +27,6 @@ You may define different versions for poco, libreoffice core and
 libreoffice online. The following software package combinations are
 tested and known to work:
 
-Package            | version
--------------------|---------------------
-poco               | 1.7.7
-libreoffice core   | cp-5.1-17
-libreoffice online | 2.0.2-3
-
-
-Package            | version
--------------------|---------------------
-poco               | 1.7.8
-libreoffice core   | cp-5.1-18
-libreoffice online | 2.0.3
-
-Package            | version
--------------------|---------------------
-poco               | 1.7.8
-libreoffice core   | cp-5.1-21
-libreoffice online | 2.0.4
-
-Package            | version
--------------------|---------------------
-poco               | 1.7.8
-libreoffice core   | libreoffice-5.3.1.1
-libreoffice online | libreoffice-5.3.1.2
-
-Package            | version
--------------------|---------------------
-poco               | 1.7.8
-libreoffice core   | cp-5.1-23
-libreoffice online | 2.0.5
 
 Package            | version
 -------------------|---------------------
@@ -66,15 +36,21 @@ libreoffice online | 2.0.6
 
 Package            | version
 -------------------|---------------------
-poco               | 1.7.8
-libreoffice core   | cp-5.3-10
-libreoffice online | 2.1.0
+poco               | 1.7.8p2
+libreoffice core   | libreoffice-5.3.3.2
+libreoffice online | libreoffice-5.3.3.2
 
 Package            | version
 -------------------|---------------------
 poco               | 1.7.8p2
-libreoffice core   | libreoffice-5.3.3.2
-libreoffice online | libreoffice-5.3.3.2
+libreoffice core   | cp-5.3-14
+libreoffice online | 2.1.1
+
+Package            | version
+-------------------|---------------------
+poco               | 1.7.8p2
+libreoffice core   | cp-5.3-17
+libreoffice online | 2.1.2
 
 It's recommended to leave LOOL_PREFIX as "/opt/lool" and POCO_PREFIX empty.
 
