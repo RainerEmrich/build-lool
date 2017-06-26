@@ -75,7 +75,8 @@ build_online () {
 		libreoffice-5.3.0* | \
 		libreoffice-5.3.1* | \
 		libreoffice-5.3.2* | \
-		libreoffice-5.3.3*)
+		libreoffice-5.3.3* | \
+		libreoffice-5.3.4*)
 			cd loleaflet
 
 			sudo make -j ${NUM_PROC} dist | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
