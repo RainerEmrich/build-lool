@@ -51,7 +51,8 @@ build_online () {
 		./autogen.sh | tee ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
 
 		./configure --prefix=${LOOL_PREFIX} --with-poco-includes=${POCO_PREFIX}/include --with-poco-libs=${POCO_PREFIX}/lib --with-lokit-path=../core-${LOC_VERSION}/include \
-				--with-lo-path=${LOOL_PREFIX}/lib/${LOC_DISTRO} --with-logfile=${LOOL_PREFIX}/var/log/loolwsd/loolwsd.log | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
+				--with-lo-path=${LOOL_PREFIX}/lib/${LOC_DISTRO} --with-logfile=${LOOL_PREFIX}/var/log/loolwsd/loolwsd.log --with-max-connections=${LOOL_MAX_CON} \
+				--with-max-documents=${LOOL_MAX_DOC} | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
 
 		make -j ${NUM_PROC} | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
 		if [ $? -eq 2 ] ; then

@@ -23,22 +23,15 @@ Before you start please customize the configuration.
 Copy config/lool-config.sh.example to config/lool-config.sh.
 Adjust config/lool-config.sh to your needs.
 
+Especially take care for the settings of the two variables LOOL_MAX_CON and
+LOOL_MAX_DOC. These two variables define the limits for the allowed number of
+simultaneous connections to your online office and the allowed number of
+simultaneous open documents. It's not possible to set these variables to unlimited.
+You are restricted by the available system resources anyway.
+
 You may define different versions for poco, libreoffice core and
 libreoffice online. The following software package combinations are
 tested and known to work:
-
-
-Package            | version
--------------------|---------------------
-poco               | 1.7.8
-libreoffice core   | cp-5.1-24
-libreoffice online | 2.0.6
-
-Package            | version
--------------------|---------------------
-poco               | 1.7.8p2
-libreoffice core   | libreoffice-5.3.3.2
-libreoffice online | libreoffice-5.3.3.2
 
 Package            | version
 -------------------|---------------------
@@ -48,7 +41,7 @@ libreoffice online | 2.1.1
 
 Package            | version
 -------------------|---------------------
-poco               | 1.7.8p2
+poco               | 1.7.8p3
 libreoffice core   | cp-5.3-17
 libreoffice online | 2.1.2
 
