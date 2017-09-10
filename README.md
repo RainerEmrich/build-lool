@@ -35,21 +35,27 @@ tested and known to work:
 
 Package            | version
 -------------------|---------------------
-poco               | 1.7.8p2
-libreoffice core   | cp-5.3-14
-libreoffice online | 2.1.1
+poco               | 1.7.8
+libreoffice core   | cp-5.1-24
+libreoffice online | 2.0.6
 
 Package            | version
 -------------------|---------------------
 poco               | 1.7.8p3
-libreoffice core   | cp-5.3-17
-libreoffice online | 2.1.2
+libreoffice core   | cp-5.3-20
+libreoffice online | 2.1.2-11
 
 Package            | version
 -------------------|---------------------
 poco               | 1.7.8p3
 libreoffice core   | libreoffice-5.3.4.2
 libreoffice online | libreoffice-5.3.4.2
+
+Package            | version
+-------------------|---------------------
+poco               | 1.7.8p3
+libreoffice core   | libreoffice-5.4.1.2
+libreoffice online | libreoffice-5.4.1.2
 
 It's recommended to leave LOOL_PREFIX as "/opt/lool" and POCO_PREFIX empty.
 
@@ -81,8 +87,8 @@ There are packages for poco, libreoffice core, loolwsd and loleaflet. Depending
 on the configuration you will find poco-1.7.7.tar.xz, core-cp-5.1-17.tar.xz,
 loolwsd-2.0.2-3.tar.xz, loleaflet-2.0.2-3.tar.gz and a combined package
 lool-poco-1.7.7-core-cp-5.1-17-online-2.0.2-3.tar.xz to be installed to "/opt/lool".
-For the Collabora LibreOffice Online 2.1 versions there's no seperate loleaflet
-package.
+For the Collabora LibreOffice Online 2.1 and LibreOffice 5.4.x versions there's no seperate
+loleaflet package.
 
 If you change source versions after a first build, only the necessary
 components are rebuild.
