@@ -1,8 +1,8 @@
 #!/bin/bash
 #
 # This script builds libreoffice and libreoffice online on an ubuntu 16.04.
-# instance. Installs and sets up all required packages and finally builds
-# libreoffice and libreoffice online.
+# or Debian 8.x instance. Installs and sets up all required packages and
+# finally builds libreoffice and libreoffice online.
 #
 # Copyright 2017 Rainer Emrich, <rainer@emrich-ebersheim.de>
 #

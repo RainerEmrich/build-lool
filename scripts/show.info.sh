@@ -23,8 +23,8 @@ show_info () {
 
 	echo "#######################################################################################"
 	echo "#                                                                                     #"
-	echo "# This script sets up an ubuntu 16.04. standard installation for building             #"
-	echo "# libreoffice online to use with nextcloud.                                           #"
+	echo "# This script sets up an ubuntu 16.04. or Debian 8.x standard installation for        #"
+	echo "# building libreoffice online to use with nextcloud.                                  #"
 	echo "#                                                                                     #"
 	echo "# The first thing to do is updating the installation and installing the necessary     #"
 	echo "# tools and packages.                                                                 #"
