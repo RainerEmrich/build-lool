@@ -20,17 +20,17 @@
 #
 # Define poco version to use.
 
-POCO_VERSION="1.7.8p3"
+POCO_VERSION="1.7.9"
 
 #
 # Define libreoffice core version to use.
 
-LOC_VERSION="cp-5.3-17"
+LOC_VERSION="cd-5.3-24"
 
 #
 # Define libreoffice online version to use.
 
-LOOL_VERSION="2.1.2"
+LOOL_VERSION="2.1.2-14"
 
 #
 # Define libreoffice prefix, should be /opt/lool.
