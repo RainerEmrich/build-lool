@@ -36,13 +36,33 @@ upgrade_system () {
 
 		sudo apt-get install apache2 -y
 
-		sudo apt-get install libtool libegl1-mesa-dev libkrb5-dev graphviz -y
+		sudo apt-get install apt-transport-https git libtool libegl1-mesa-dev libkrb5-dev graphviz -y
 
 		sudo apt-get build-dep libreoffice -y
 
 		sudo apt-get install libiodbc2 libiodbc2-dev -y
 
-		sudo apt-get install libcunit1 libcunit1-dev libcap-dev npm nodejs-legacy python-polib python3-polib -y
+		sudo apt-get install libcunit1 libcunit1-dev libcap-dev python-polib python3-polib -y
+
+		case ${DIST_ID} in
+		Debian)
+			case ${DIST_RELEASE} in
+			8.*)
+				wget -qO- https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo apt-key add -
+				echo "deb https://deb.nodesource.com/node_6.x ${DIST_CODENAME} main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+				echo "deb-src https://deb.nodesource.com/node_6.x ${DIST_CODENAME} main" | sudo tee -a /etc/apt/sources.list.d/nodesource.list
+				sudo apt-get update
+				sudo apt-get install nodejs
+				;;
+			*)
+				sudo apt-get install npm nodejs-legacy
+				;;
+			esac
+			;;
+		*)
+			sudo apt-get install npm nodejs-legacy
+			;;
+		esac
 
 		sudo npm install -g jake
 
