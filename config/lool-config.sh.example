@@ -20,17 +20,17 @@
 #
 # Define poco version to use.
 
-POCO_VERSION="1.7.9"
+POCO_VERSION="1.7.9p2"
 
 #
 # Define libreoffice core version to use.
 
-LOC_VERSION="cd-5.3-24"
+LOC_VERSION="cp-5.3-31"
 
 #
 # Define libreoffice online version to use.
 
-LOOL_VERSION="2.1.2-14"
+LOOL_VERSION="2.1.5-5"
 
 #
 # Define libreoffice prefix, should be /opt/lool.
@@ -45,7 +45,7 @@ LOOL_MAX_CON="80"
 #
 # Set the limit on the total number of documents. Def: 10, Min: 2.
 
-LOOL_MAX_DOC="10"
+LOOL_MAX_DOC="20"
 
 #
 # Define poco prefix, defaults to LOOL_PREFIX if empty.
