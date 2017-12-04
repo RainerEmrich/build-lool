@@ -48,13 +48,28 @@ build_online () {
 
 		LOC_DISTRO="$(basename $(find ${LOOL_PREFIX}/lib -maxdepth 1 -type d -name "*office"))"
 
+		case $LOOL_VERSION in
+		2.1.5-5)
+			sed --in-place "s/uint64_t/long long unsigned int/g" kit/DummyLibreOfficeKit.cpp
+			;;
+		*)
+			;;
+		esac
+
 		./autogen.sh | tee ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
 
 		./configure --prefix=${LOOL_PREFIX} --with-poco-includes=${POCO_PREFIX}/include --with-poco-libs=${POCO_PREFIX}/lib --with-lokit-path=../core-${LOC_VERSION}/include \
 				--with-lo-path=${LOOL_PREFIX}/lib/${LOC_DISTRO} --with-logfile=${LOOL_PREFIX}/var/log/loolwsd/loolwsd.log --with-max-connections=${LOOL_MAX_CON} \
 				--with-max-documents=${LOOL_MAX_DOC} | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
 
-		make -j ${NUM_PROC} | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
+		case $LOOL_VERSION in
+		2.1.5-5)
+			make -j ${NUM_PROC} CXXFLAGS="-g -O2 -std=c++11 -Wall -Wextra -Wno-error -Wshadow" | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
+			;;
+		*)
+			make -j ${NUM_PROC} | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
+			;;
+		esac
 		if [ $? -eq 2 ] ; then
 			echo
 			echo "ERROR: see ${LOG_DIR}/online-${LOOL_VERSION}.log!"
