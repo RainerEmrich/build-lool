@@ -33,6 +33,7 @@ build_package () {
 		cd ${START_DIR}
 
 		LOOL_DISTRO="$(ls -1 ${LOOL_PREFIX}/etc)"
+		LOC_DISTRO="$(basename $(find ${LOOL_PREFIX}/lib -maxdepth 1 -type d -name "*office"))"
 		sudo mkdir -p ${LOOL_PREFIX}/var/www
 
 		case $LOOL_VERSION in
@@ -59,6 +60,28 @@ build_package () {
 		sudo chmod -R g-w,o-w ${LOOL_PREFIX}/var/www/loleaflet
 
 		sudo tar -C ${LOOL_PREFIX}/ -cvJf ${PKG_DIR}/${PACKAGE_NAME}.tar.xz .
+
+		echo "/lib/x86_64-linux-gnu" >grep-patterns.txt
+		echo "/usr/lib/x86_64-linux-gnu" >>grep-patterns.txt
+
+		(ldd ${LOOL_PREFIX}/bin/lool* ; ldd ${LOOL_PREFIX}/lib/${LOC_DISTRO}/program/*) | grep --file=grep-patterns.txt | cut -d " " -s -f 3 | sort -u >depend-libraries.txt
+
+		for lib in $(cat depend-libraries.txt) ; do
+			echo $(dpkg -S $lib) >>packages.txt
+		done
+
+		cut packages.txt -d ":" -s -f 1 | sort -u >required-packages.txt
+		echo "libcap2-bin" >>required-packages.txt
+		echo "libcunit1" >>required-packages.txt
+		echo "libiodbc2" >>required-packages.txt
+		echo "python-polib" >>required-packages.txt
+		echo "python3-polib" >>required-packages.txt
+
+		/bin/mv required-packages.txt ${PKG_DIR}/${PACKAGE_NAME}-required-packages.txt
+
+		/bin/rm grep-patterns.txt
+		/bin/rm depend-libraries.txt
+		/bin/rm packages.txt
 
 		echo "${PACKAGE_NAME}" >${STAMP_DIR}/package_build
 
