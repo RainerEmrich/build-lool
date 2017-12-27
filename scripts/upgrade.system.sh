@@ -44,6 +44,8 @@ upgrade_system () {
 
 		sudo apt-get install libcunit1 libcunit1-dev libcap-dev python-polib python3-polib -y
 
+		sudo apt-get install python-lxml python3-lxml -y
+
 		case ${DIST_ID} in
 		Debian)
 			case ${DIST_RELEASE} in
