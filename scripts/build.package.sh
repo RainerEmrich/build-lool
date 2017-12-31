@@ -76,6 +76,8 @@ build_package () {
 		echo "libiodbc2" >>required-packages.txt
 		echo "python-polib" >>required-packages.txt
 		echo "python3-polib" >>required-packages.txt
+		echo "python-lxml" >>required-packages.txt
+		echo "python3-lxml" >>required-packages.txt
 
 		/bin/mv required-packages.txt ${PKG_DIR}/${PACKAGE_NAME}-required-packages.txt
 
