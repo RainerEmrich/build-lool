@@ -30,7 +30,7 @@ build_online () {
 		echo "#######################################################################################"
 		echo
 
-		LIST="loolforkit loolmap loolmount loolstress looltool loolwsd loolwsd-systemplate-setup"
+		LIST="loolconfig loolforkit loolmap loolmount loolstress looltool loolwsd loolwsd-systemplate-setup"
 		for BIN in ${LIST} ; do
 			if [ -f ${LOOL_PREFIX}/bin/${BIN} ] ; then sudo /bin/rm -rf ${LOOL_PREFIX}/bin/${BIN} ; fi
 		done
