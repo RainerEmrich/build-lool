@@ -46,6 +46,8 @@ upgrade_system () {
 
 		sudo apt-get install python-lxml python3-lxml -y
 
+		sudo apt-get install libpam0g-dev -y
+
 		case ${DIST_ID} in
 		Debian)
 			case ${DIST_RELEASE} in
