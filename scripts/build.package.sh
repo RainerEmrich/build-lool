@@ -55,9 +55,27 @@ build_package () {
 
 		sudo touch ${LOOL_PREFIX}/var/www/loleaflet/dist/branding.css
 		sudo touch ${LOOL_PREFIX}/var/www/loleaflet/dist/branding.js
-		sudo /bin/cp -a ${LOOL_PREFIX}/var/www/loleaflet/dist/l10n ${LOOL_PREFIX}/var/www/loleaflet/dist/admin/
+
+		case $LOOL_VERSION in
+		1.* | \
+		2.0* | \
+		libreoffice-5.3.0* | \
+		libreoffice-5.3.1* | \
+		libreoffice-5.3.2* | \
+		libreoffice-5.3.3* | \
+		libreoffice-5.3.4*)
+			sudo /bin/cp -a ${LOOL_PREFIX}/var/www/loleaflet/dist/l10n ${LOOL_PREFIX}/var/www/loleaflet/dist/admin/
+			;;
+		*)
+			;;
+		esac
+
 		sudo chown -R root:root ${LOOL_PREFIX}/var/www/loleaflet
 		sudo chmod -R g-w,o-w ${LOOL_PREFIX}/var/www/loleaflet
+		sudo mkdir -p ${LOOL_PREFIX}/var/www/loleaflet/dist/bootstrap/js
+		sudo mkdir -p ${LOOL_PREFIX}/var/www/loleaflet/dist/bootstrap/assets/js/vendor
+		sudo /bin/cp ${LOOL_PREFIX}/var/www/loleaflet/dist/bootstrap/holder.min.js ${LOOL_PREFIX}/var/www/loleaflet/dist/bootstrap/assets/js/vendor/
+		sudo /bin/cp ${LOOL_PREFIX}/var/www/loleaflet/dist/bootstrap/ie10-viewport-bug-workaround.js ${LOOL_PREFIX}/var/www/loleaflet/dist/bootstrap/assets/js/
 
 		sudo tar -C ${LOOL_PREFIX}/ -cvJf ${PKG_DIR}/${PACKAGE_NAME}.tar.xz .
 
