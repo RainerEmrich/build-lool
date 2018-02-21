@@ -40,33 +40,45 @@ tested and known to work:
 
 Package            | version
 -------------------|---------------------
-poco               | 1.7.8
-libreoffice core   | cp-5.1-24
-libreoffice online | 2.0.6
+poco               | 1.7.9p2
+libreoffice core   | cd-5.3-27
+libreoffice online | 2.1.2-17
 
 Package            | version
 -------------------|---------------------
 poco               | 1.7.9p2
-libreoffice core   | cd-5.3-24
-libreoffice online | 2.1.2-15
+libreoffice core   | libreoffice-5.3.4.2
+libreoffice online | libreoffice-5.3.4.2
 
 Package            | version
 -------------------|---------------------
-poco               | 1.7.9
+poco               | 1.7.9p2
 libreoffice core   | libreoffice-5.4.2.2
 libreoffice online | libreoffice-5.4.2.2
 
 Package            | version
 -------------------|---------------------
-poco               | 1.7.9p2
-libreoffice core   | cp-5.3-31
-libreoffice online | 2.1.5-5
+poco               | 1.8.1
+libreoffice core   | libreoffice-6.0.1.1
+libreoffice online | libreoffice-6.0.0.3
 
 Package            | version
 -------------------|---------------------
 poco               | 1.7.9p2
-libreoffice core   | cp-5.3-36
-libreoffice online | CODE-3.0.0
+libreoffice core   | cp-5.3-39
+libreoffice online | 3.0-final
+
+Package            | version
+-------------------|---------------------
+poco               | 1.8.1
+libreoffice core   | cp-5.3-31
+libreoffice online | 2.1.5-6
+
+Package            | version
+-------------------|---------------------
+poco               | 1.8.1
+libreoffice core   | cp-5.3-40
+libreoffice online | 3.1-rc2
 
 It's recommended to leave LOOL_PREFIX as "/opt/lool" and POCO_PREFIX empty.
 
