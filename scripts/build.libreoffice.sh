@@ -43,14 +43,14 @@ build_libreoffice () {
 		echo "lo_sources_ver=${LOC_VERSION}" >sources.ver
 
 		case ${LOC_VERSION} in
-		cp-5.3-32 | \
-		cp-5.3-33 | \
-		cp-5.3-34 | \
-		cp-5.3-35 | \
-		cp-5.3-36)
+		cd-5.1-* | \
+		cd-5.3-* | \
+		cp-5.3-2? | \
+		cp-5.3-30 | \
+		cp-5.3-31)
+			sed --in-place 's/^CollaboraOffice/LibreOffice/' instsetoo_native/util/openoffice.lst.in
 			;;
 		*)
-			sed --in-place 's/^CollaboraOffice/LibreOffice/' instsetoo_native/util/openoffice.lst.in
 			;;
 		esac
 
