@@ -2,7 +2,7 @@
 #
 # Show some information about the script.
 #
-# Copyright 2017 Rainer Emrich, <rainer@emrich-ebersheim.de>
+# Copyright 2017, 2018 Rainer Emrich, <rainer@emrich-ebersheim.de>
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,15 +23,15 @@ show_info () {
 
 	echo "#######################################################################################"
 	echo "#                                                                                     #"
-	echo "# This script sets up an ubuntu 16.04. or Debian 8.x standard installation for        #"
-	echo "# building libreoffice online to use with nextcloud.                                  #"
+	echo "# This script sets up an ubuntu 16.04., Debian 8.x, or Debian 9.x standard            #"
+	echo "# installation for building libreoffice online to use with nextcloud.                 #"
 	echo "#                                                                                     #"
 	echo "# The first thing to do is updating the installation and installing the necessary     #"
 	echo "# tools and packages.                                                                 #"
 	echo "#                                                                                     #"
 	echo "# After a reboot the script continues to build libreoffice online.                    #"
 	echo "#                                                                                     #"
-	echo "# Before you continue please have a look in the configuration file                    #"
+	echo "# Before you continue, please have a look in the configuration file                   #"
 	echo "# ${CONFIG_DIR}/lool-config.sh"
 	echo "#                                                                                     #"
 	echo "#######################################################################################"

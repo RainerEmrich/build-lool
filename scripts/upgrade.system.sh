@@ -2,7 +2,7 @@
 #
 # Update the system and install the required packages.
 #
-# Copyright 2017 Rainer Emrich, <rainer@emrich-ebersheim.de>
+# Copyright 2017, 2018 Rainer Emrich, <rainer@emrich-ebersheim.de>
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -53,8 +53,9 @@ upgrade_system () {
 		case ${DIST_ID} in
 		Debian)
 			case ${DIST_RELEASE} in
-			8.*)
-				sudo apt-get install seccomp libseccomp-dev -y
+			8.* | \
+			9.*)
+				sudo apt-get install seccomp libseccomp-dev libssl-dev -y
 
 				wget -qO- https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo apt-key add -
 				echo "deb https://deb.nodesource.com/node_6.x ${DIST_CODENAME} main" | sudo tee /etc/apt/sources.list.d/nodesource.list
