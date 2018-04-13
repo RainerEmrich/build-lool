@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-# This script builds libreoffice and libreoffice online on an ubuntu 16.04.
-# or Debian 8.x instance. Installs and sets up all required packages and
-# finally builds libreoffice and libreoffice online.
+# This script builds libreoffice and libreoffice online on an ubuntu 16.04.,
+# Debian 8.x or Debian 9.x instance. Installs and sets up all required
+# packages and finally builds libreoffice and libreoffice online.
 #
-# Copyright 2017 Rainer Emrich, <rainer@emrich-ebersheim.de>
+# Copyright (C) 2017-2018 Rainer Emrich, <rainer@emrich-ebersheim.de>
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -99,6 +99,9 @@ esac
 echo "#"
 echo "# Single archive for simple installation:"
 echo "# ${PACKAGE_NAME}.tar.xz"
+echo "#"
+echo "# List of required packages:"
+echo "# ${PACKAGE_NAME}-required-packages.txt"
 echo "#"
 echo "#######################################################################################"
 echo

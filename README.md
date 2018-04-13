@@ -5,6 +5,7 @@ Script collection to build libreoffice online or collabora online.
 Supported Linux Distributions:
 * Ubuntu 16.04.x, xenial
 * Debian 8.x, jessie
+* Debian 9.x, stretch
 
 Updates the system, installs and sets up the required packages. Finally builds
 libreoffice and libreoffice online.
@@ -111,7 +112,11 @@ on the configuration you will find poco-1.7.7.tar.xz, core-cp-5.1-17.tar.xz,
 loolwsd-2.0.2-3.tar.xz, loleaflet-2.0.2-3.tar.gz and a combined package
 lool-poco-1.7.7-core-cp-5.1-17-online-2.0.2-3.tar.xz to be installed to "/opt/lool".
 For the Collabora LibreOffice Online 2.1 and LibreOffice 5.4.x versions and newer there's
-no seperate loleaflet package.
+no seperate loleaflet package. Since version 2.0.2 a list of required packages for the
+production system is generated. It's stored in the package directory for example as
+lool-poco-1.7.7-core-cp-5.1-17-online-2.0.2-3-required-packages.txt. The list is used by
+the script install-lool.sh from the install-cloud-server script colletcion to automatically
+install missing packages.
 
 If you change source versions after a first build, only the necessary components
 are rebuild.
