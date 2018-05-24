@@ -44,7 +44,9 @@ build_libreoffice () {
 
 		case ${LOC_VERSION} in
 		cd-5.1-* | \
-		cd-5.3-* | \
+		cd-5.3-1* | \
+		cd-5.3-2* | \
+		cd-5.3-3* | \
 		cp-5.3-2? | \
 		cp-5.3-30 | \
 		cp-5.3-31)
