@@ -42,26 +42,32 @@ tested and known to work:
 Package            | version
 -------------------|---------------------
 poco               | 1.7.9p2
-libreoffice core   | cd-5.3-27
-libreoffice online | 2.1.2-17
-
-Package            | version
--------------------|---------------------
-poco               | 1.7.9p2
 libreoffice core   | libreoffice-5.3.4.2
 libreoffice online | libreoffice-5.3.4.2
 
 Package            | version
 -------------------|---------------------
+poco               | 1.9.0
+libreoffice core   | libreoffice-5.4.7.2
+libreoffice online | libreoffice-5.4.7.2
+
+Package            | version
+-------------------|---------------------
+poco               | 1.9.0
+libreoffice core   | libreoffice-6.0.4.2
+libreoffice online | libreoffice-6.0.4.2
+
+Package            | version
+-------------------|---------------------
 poco               | 1.7.9p2
-libreoffice core   | libreoffice-5.4.2.2
-libreoffice online | libreoffice-5.4.2.2
+libreoffice core   | cd-5.3-27
+libreoffice online | 2.1.2-17
 
 Package            | version
 -------------------|---------------------
 poco               | 1.8.1
-libreoffice core   | libreoffice-6.0.1.1
-libreoffice online | libreoffice-6.0.0.3
+libreoffice core   | cp-5.3-31
+libreoffice online | 2.1.5-6
 
 Package            | version
 -------------------|---------------------
@@ -72,14 +78,14 @@ libreoffice online | 3.0-final
 Package            | version
 -------------------|---------------------
 poco               | 1.8.1
-libreoffice core   | cp-5.3-31
-libreoffice online | 2.1.5-6
+libreoffice core   | cp-5.3-43
+libreoffice online | 3.1-final
 
 Package            | version
 -------------------|---------------------
-poco               | 1.8.1
-libreoffice core   | cp-5.3-43
-libreoffice online | 3.1-final
+poco               | 1.9.0
+libreoffice core   | cd-5.3-46
+libreoffice online | cd-3.2.2-1
 
 It's recommended to leave LOOL_PREFIX as "/opt/lool" and POCO_PREFIX empty.
 
