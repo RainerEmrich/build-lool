@@ -57,18 +57,18 @@ build_online () {
 			;;
 		esac
 
-		./autogen.sh | tee ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
+		./autogen.sh 2>&1 | tee ${LOG_DIR}/online-${LOOL_VERSION}.log
 
 		./configure --prefix=${LOOL_PREFIX} --with-poco-includes=${POCO_PREFIX}/include --with-poco-libs=${POCO_PREFIX}/lib --with-lokit-path=../core-${LOC_VERSION}/include \
 				--with-lo-path=${LOOL_PREFIX}/lib/${LOC_DISTRO} --with-logfile=${LOOL_PREFIX}/var/log/loolwsd/loolwsd.log --with-max-connections=${LOOL_MAX_CON} \
-				--with-max-documents=${LOOL_MAX_DOC} | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
+				--with-max-documents=${LOOL_MAX_DOC} 2>&1 | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log
 
 		case $LOOL_VERSION in
 		2.1.5-5)
-			make -j ${NUM_PROC} CXXFLAGS="-g -O2 -std=c++11 -Wall -Wextra -Wno-error -Wshadow" | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
+			make -j ${NUM_PROC} CXXFLAGS="-g -O2 -std=c++11 -Wall -Wextra -Wno-error -Wshadow" 2>&1 | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log
 			;;
 		*)
-			make -j ${NUM_PROC} | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
+			make -j ${NUM_PROC} 2>&1 | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log
 			;;
 		esac
 		if [ $? -eq 2 ] ; then
@@ -79,8 +79,8 @@ build_online () {
 			exit
 		fi
 
-		sudo make install | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
-		sudo make install DESTDIR="${BUILD_DIR}/install" | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
+		sudo make install 2>&1 | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log
+		sudo make install DESTDIR="${BUILD_DIR}/install" 2>&1 | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log
 
 		sudo tar -C ${BUILD_DIR}/install${LOOL_PREFIX}/ -cvJf ${PKG_DIR}/loolwsd-${LOOL_VERSION}.tar.xz .
 
@@ -96,7 +96,7 @@ build_online () {
 		libreoffice-5.3.4*)
 			cd loleaflet
 
-			sudo make -j ${NUM_PROC} dist | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log 2>&1
+			sudo make -j ${NUM_PROC} dist 2>&1 | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log
 			if [ $? -eq 2 ] ; then
 				echo
 				echo "ERROR: see ${LOG_DIR}/online-${LOOL_VERSION}.log!"

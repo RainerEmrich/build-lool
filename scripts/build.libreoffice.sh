@@ -54,7 +54,7 @@ build_libreoffice () {
 			;;
 		esac
 
-		./autogen.sh --prefix=${LOOL_PREFIX} --enable-release-build --without-help --without-myspell-dicts --without-doxygen --with-parallelism | tee ${LOG_DIR}/core-${LOC_VERSION}.log 2>&1
+		./autogen.sh --prefix=${LOOL_PREFIX} --enable-release-build --without-help --without-myspell-dicts --without-doxygen --with-parallelism 2>&1 | tee ${LOG_DIR}/core-${LOC_VERSION}.log
 
 		make fetch
 		if [ $? -eq 2 ] ; then
@@ -65,7 +65,7 @@ build_libreoffice () {
 			exit
 		fi
 
-		make | tee -a ${LOG_DIR}/core-${LOC_VERSION}.log 2>&1
+		make 2>&1 | tee -a ${LOG_DIR}/core-${LOC_VERSION}.log
 		if [ $? -eq 2 ] ; then
 			echo
 			echo "ERROR: see ${LOG_DIR}/core-${LOC_VERSION}.log!"
@@ -74,7 +74,7 @@ build_libreoffice () {
 			exit
 		fi
 
-		make check | tee -a ${LOG_DIR}/core-${LOC_VERSION}.log 2>&1
+		make check 2>&1 | tee -a ${LOG_DIR}/core-${LOC_VERSION}.log
 		if [ $? -eq 2 ] ; then
 			echo
 			echo "ERROR: see ${LOG_DIR}/core-${LOC_VERSION}.log!"
@@ -83,8 +83,8 @@ build_libreoffice () {
 			exit
 		fi
 
-		sudo make install | tee -a ${LOG_DIR}/core-${LOC_VERSION}.log 2>&1
-		sudo make install DESTDIR="${BUILD_DIR}/install" | tee -a ${LOG_DIR}/core-${LOC_VERSION}.log 2>&1
+		sudo make install 2>&1 | tee -a ${LOG_DIR}/core-${LOC_VERSION}.log
+		sudo make install DESTDIR="${BUILD_DIR}/install" 2>&1 | tee -a ${LOG_DIR}/core-${LOC_VERSION}.log
 
 		sudo tar -C ${BUILD_DIR}/install${LOOL_PREFIX}/ -cvJf ${PKG_DIR}/core-${LOC_VERSION}.tar.xz .
 
