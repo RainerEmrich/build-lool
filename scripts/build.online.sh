@@ -40,9 +40,10 @@ build_online () {
 
 		cd ${BUILD_DIR}
 
-		tar xvf ${SRC_DIR}/online/${LOOL_VERSION}.tar.gz
+		/bin/cp -a ${SRC_DIR}/online/online online-${LOOL_VERSION}
 
 		cd online-${LOOL_VERSION}
+		git checkout tags/${LOOL_VERSION}
 
 		sed --in-place "s#POCOLIBDIRS=\"/usr/local/lib /opt/poco/lib\"#POCOLIBDIRS=\"${POCO_PREFIX}/lib\"#" loolwsd-systemplate-setup
 

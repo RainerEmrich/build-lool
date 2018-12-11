@@ -37,7 +37,9 @@ get_sources () {
 	if [ ! -f "${LOC_VERSION}.tar.gz" ] ; then wget https://github.com/LibreOffice/core/archive/${LOC_VERSION}.tar.gz ; fi
 
 	cd ${SRC_DIR}/online
-	if [ ! -f "${LOOL_VERSION}.tar.gz" ] ; then wget https://github.com/LibreOffice/online/archive/${LOOL_VERSION}.tar.gz ; fi
+	if [ ! -d "online" ] ; then clone https://github.com/LibreOffice/online.git ; fi
+	cd online
+	git fetch --all --tags --prune
 
 	cd ${START_DIR}
 
