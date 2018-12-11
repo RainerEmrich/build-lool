@@ -44,9 +44,9 @@ build_poco () {
 		tar xvf ${SRC_DIR}/poco/poco-${POCO_VERSION}-all.tar.gz
 		cd poco-${POCO_VERSION}-all
 
-		./configure --prefix=${POCO_PREFIX} | tee ${LOG_DIR}/poco-${POCO_VERSION}-all.log 2>&1
+		./configure --prefix=${POCO_PREFIX} 2>&1 | tee ${LOG_DIR}/poco-${POCO_VERSION}-all.log
 
-		make -j ${NUM_PROC} | tee -a ${LOG_DIR}/poco-${POCO_VERSION}-all.log 2>&1
+		make -j ${NUM_PROC} 2>&1 | tee -a ${LOG_DIR}/poco-${POCO_VERSION}-all.log
 		if [ $? -eq 2 ] ; then
 			echo
 			echo "ERROR: see ${LOG_DIR}/poco-${POCO_VERSION}-all.log!"
@@ -55,8 +55,8 @@ build_poco () {
 			exit
 		fi
 
-		sudo make install | tee -a ${LOG_DIR}/poco-${POCO_VERSION}-all.log 2>&1
-		sudo make install DESTDIR="${BUILD_DIR}/install" | tee -a ${LOG_DIR}/poco-${POCO_VERSION}-all.log 2>&1
+		sudo make install 2>&1 | tee -a ${LOG_DIR}/poco-${POCO_VERSION}-all.log
+		sudo make install DESTDIR="${BUILD_DIR}/install" 2>&1 | tee -a ${LOG_DIR}/poco-${POCO_VERSION}-all.log
 
 		sudo tar -C ${BUILD_DIR}/install${POCO_PREFIX}/ -cvJf ${PKG_DIR}/poco-${POCO_VERSION}.tar.xz .
 
