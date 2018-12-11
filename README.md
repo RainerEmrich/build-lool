@@ -41,45 +41,27 @@ tested and known to work:
 
 Package            | version
 -------------------|---------------------
-poco               | 1.7.9p2
-libreoffice core   | cd-5.3-27
-libreoffice online | 2.1.2-17
-
-Package            | version
--------------------|---------------------
-poco               | 1.7.9p2
-libreoffice core   | libreoffice-5.3.4.2
-libreoffice online | libreoffice-5.3.4.2
-
-Package            | version
--------------------|---------------------
-poco               | 1.7.9p2
-libreoffice core   | libreoffice-5.4.2.2
-libreoffice online | libreoffice-5.4.2.2
-
-Package            | version
--------------------|---------------------
 poco               | 1.8.1
 libreoffice core   | libreoffice-6.0.1.1
 libreoffice online | libreoffice-6.0.0.3
 
 Package            | version
 -------------------|---------------------
-poco               | 1.7.9p2
-libreoffice core   | cp-5.3-39
-libreoffice online | 3.0-final
-
-Package            | version
--------------------|---------------------
-poco               | 1.8.1
-libreoffice core   | cp-5.3-31
-libreoffice online | 2.1.5-6
-
-Package            | version
--------------------|---------------------
 poco               | 1.8.1
 libreoffice core   | cp-5.3-43
 libreoffice online | 3.1-final
+
+Package            | version
+-------------------|---------------------
+poco               | 1.9.0
+libreoffice core   | cp-5.3-47
+libreoffice online | cd-3.2.2-2
+
+Package            | version
+-------------------|---------------------
+poco               | 1.9.0
+libreoffice core   | cp-5.3-58
+libreoffice online | cd-3.4.0-final
 
 It's recommended to leave LOOL_PREFIX as "/opt/lool" and POCO_PREFIX empty.
 
@@ -107,14 +89,13 @@ After login again:
 * Builds installable package.
 
 After the script has finished you find the built packages in the subdirectory "packages".
-There are packages for poco, libreoffice core, loolwsd and loleaflet. Depending
-on the configuration you will find poco-1.7.7.tar.xz, core-cp-5.1-17.tar.xz,
-loolwsd-2.0.2-3.tar.xz, loleaflet-2.0.2-3.tar.gz and a combined package
-lool-poco-1.7.7-core-cp-5.1-17-online-2.0.2-3.tar.xz to be installed to "/opt/lool".
-For the Collabora LibreOffice Online 2.1 and LibreOffice 5.4.x versions and newer there's
-no seperate loleaflet package. Since version 2.0.2 a list of required packages for the
-production system is generated. It's stored in the package directory for example as
-lool-poco-1.7.7-core-cp-5.1-17-online-2.0.2-3-required-packages.txt. The list is used by
+There are packages for poco, libreoffice core and loolwsd. Depending on the configuration
+you will find poco-1.9.0.tar.xz, core-cp-5.3-58.tar.xz, loolwsd-3.4.0-final.tar.xz and a
+combined package lool-poco-1.9.0-core-cp-5.3-58-online-3.4.0-final.tar.xz to be installed
+to "/opt/lool".
+Since version 2.0.2 a list of required packages for the production system is generated. It's
+stored in the package directory for example as
+lool-poco-1.9.0-core-cp-5.3-58-online-3.4.0-final-required-packages.txt. The list is used by
 the script install-lool.sh from the install-cloud-server script colletcion to automatically
 install missing packages.
 
