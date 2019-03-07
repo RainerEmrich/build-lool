@@ -37,8 +37,10 @@ build_libreoffice () {
 
 		cd ${BUILD_DIR}
 
-		tar xvf ${SRC_DIR}/core/${LOC_VERSION}.tar.gz
+		/bin/cp -a ${SRC_DIR}/core/core core-${LOC_VERSION}
+
 		cd core-${LOC_VERSION}
+		git checkout tags/${LOC_VERSION}
 
 		echo "lo_sources_ver=${LOC_VERSION}" >sources.ver
 
