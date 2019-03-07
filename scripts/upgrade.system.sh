@@ -69,7 +69,10 @@ upgrade_system () {
 			esac
 			;;
 		*)
-			sudo apt-get install npm nodejs-legacy -y
+			sudo apt-get install npm -y
+			sudo npm cache clean
+			sudo npm install -g n
+			sudo n stable
 			;;
 		esac
 
