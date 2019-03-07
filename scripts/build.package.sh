@@ -32,7 +32,11 @@ build_package () {
 
 		cd ${START_DIR}
 
-		LOOL_DISTRO="$(ls -1 ${LOOL_PREFIX}/etc)"
+		if [ -d ${LOOL_PREFIX}/etc/libreoffice-online ] ; then
+			LOOL_DISTRO="libreoffice-online"
+		else
+			LOOL_DISTRO="loolwsd"
+		fi
 		LOC_DISTRO="$(basename $(find ${LOOL_PREFIX}/lib -maxdepth 1 -type d -name "*office"))"
 		sudo mkdir -p ${LOOL_PREFIX}/var/www
 
@@ -72,10 +76,15 @@ build_package () {
 
 		sudo chown -R root:root ${LOOL_PREFIX}/var/www/loleaflet
 		sudo chmod -R g-w,o-w ${LOOL_PREFIX}/var/www/loleaflet
-		sudo mkdir -p ${LOOL_PREFIX}/var/www/loleaflet/dist/bootstrap/js
-		sudo mkdir -p ${LOOL_PREFIX}/var/www/loleaflet/dist/bootstrap/assets/js/vendor
-		sudo /bin/cp ${LOOL_PREFIX}/var/www/loleaflet/dist/bootstrap/holder.min.js ${LOOL_PREFIX}/var/www/loleaflet/dist/bootstrap/assets/js/vendor/
-		sudo /bin/cp ${LOOL_PREFIX}/var/www/loleaflet/dist/bootstrap/ie10-viewport-bug-workaround.js ${LOOL_PREFIX}/var/www/loleaflet/dist/bootstrap/assets/js/
+
+		if [ -f ${LOOL_PREFIX}/var/www/loleaflet/dist/bootstrap/ie10-viewport-bug-workaround.js ] ; then
+			sudo mkdir -p ${LOOL_PREFIX}/var/www/loleaflet/dist/bootstrap/assets/js
+			sudo /bin/cp ${LOOL_PREFIX}/var/www/loleaflet/dist/bootstrap/ie10-viewport-bug-workaround.js ${LOOL_PREFIX}/var/www/loleaflet/dist/bootstrap/assets/js/
+		fi
+		if [ -f ${LOOL_PREFIX}/var/www/loleaflet/dist/bootstrap/holder.min.js ] ; then
+			sudo mkdir -p ${LOOL_PREFIX}/var/www/loleaflet/dist/bootstrap/assets/js/vendor
+			sudo /bin/cp ${LOOL_PREFIX}/var/www/loleaflet/dist/bootstrap/holder.min.js ${LOOL_PREFIX}/var/www/loleaflet/dist/bootstrap/assets/js/vendor/
+		fi
 
 		sudo tar -C ${LOOL_PREFIX}/ -cvJf ${PKG_DIR}/${PACKAGE_NAME}.tar.xz .
 
