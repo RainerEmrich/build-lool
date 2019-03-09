@@ -4,7 +4,7 @@
 # Debian 8.x or Debian 9.x instance. Installs and sets up all required
 # packages and finally builds libreoffice and libreoffice online.
 #
-# Copyright (C) 2017-2018 Rainer Emrich, <rainer@emrich-ebersheim.de>
+# Copyright (C) 2017-2019 Rainer Emrich, <rainer@emrich-ebersheim.de>
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
