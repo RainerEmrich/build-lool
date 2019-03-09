@@ -2,7 +2,7 @@
 #
 # Build libreoffice core.
 #
-# Copyright (C) 2017-2018 Rainer Emrich, <rainer@emrich-ebersheim.de>
+# Copyright (C) 2017-2019 Rainer Emrich, <rainer@emrich-ebersheim.de>
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -76,7 +76,7 @@ build_libreoffice () {
 			exit
 		fi
 
-		make check 2>&1 | tee -a ${LOG_DIR}/core-${LOC_VERSION}.log
+		make -k check 2>&1 | tee -a ${LOG_DIR}/core-${LOC_VERSION}.log
 		if [ $? -eq 2 ] ; then
 			echo
 			echo "ERROR: see ${LOG_DIR}/core-${LOC_VERSION}.log!"
