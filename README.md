@@ -4,6 +4,7 @@ Script collection to build libreoffice online or collabora online.
 
 Supported Linux Distributions:
 * Ubuntu 16.04.x, xenial
+* Ubuntu 18.04.x, bionic
 * Debian 8.x, jessie
 * Debian 9.x, stretch
 
