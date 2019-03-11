@@ -2,7 +2,7 @@
 #
 # Get the required sources.
 #
-# Copyright (C) 2017-2018 Rainer Emrich, <rainer@emrich-ebersheim.de>
+# Copyright (C) 2017-2019 Rainer Emrich, <rainer@emrich-ebersheim.de>
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -34,10 +34,14 @@ get_sources () {
 	if [ ! -f "poco-${POCO_VERSION}-all.tar.gz" ] ; then wget https://pocoproject.org/releases/poco-${POCO_RELEASE}/poco-${POCO_VERSION}-all.tar.gz ; fi
 
 	cd ${SRC_DIR}/core
-	if [ ! -f "${LOC_VERSION}.tar.gz" ] ; then wget https://github.com/LibreOffice/core/archive/${LOC_VERSION}.tar.gz ; fi
+	if [ ! -d "core" ] ; then git clone https://github.com/LibreOffice/core.git ; fi
+	cd core
+	git fetch --all --tags --prune
 
 	cd ${SRC_DIR}/online
-	if [ ! -f "${LOOL_VERSION}.tar.gz" ] ; then wget https://github.com/LibreOffice/online/archive/${LOOL_VERSION}.tar.gz ; fi
+	if [ ! -d "online" ] ; then git clone https://github.com/LibreOffice/online.git ; fi
+	cd online
+	git fetch --all --tags --prune
 
 	cd ${START_DIR}
 

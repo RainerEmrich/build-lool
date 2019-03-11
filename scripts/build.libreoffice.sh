@@ -2,7 +2,7 @@
 #
 # Build libreoffice core.
 #
-# Copyright (C) 2017-2018 Rainer Emrich, <rainer@emrich-ebersheim.de>
+# Copyright (C) 2017-2019 Rainer Emrich, <rainer@emrich-ebersheim.de>
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -37,8 +37,10 @@ build_libreoffice () {
 
 		cd ${BUILD_DIR}
 
-		tar xvf ${SRC_DIR}/core/${LOC_VERSION}.tar.gz
+		/bin/cp -a ${SRC_DIR}/core/core core-${LOC_VERSION}
+
 		cd core-${LOC_VERSION}
+		git checkout tags/${LOC_VERSION}
 
 		echo "lo_sources_ver=${LOC_VERSION}" >sources.ver
 
@@ -56,7 +58,7 @@ build_libreoffice () {
 			;;
 		esac
 
-		./autogen.sh --prefix=${LOOL_PREFIX} --enable-release-build --without-help --without-myspell-dicts --without-doxygen --with-parallelism | tee ${LOG_DIR}/core-${LOC_VERSION}.log 2>&1
+		./autogen.sh --prefix=${LOOL_PREFIX} --enable-release-build --without-help --without-myspell-dicts --without-doxygen --with-parallelism 2>&1 | tee ${LOG_DIR}/core-${LOC_VERSION}.log
 
 		make fetch
 		if [ $? -eq 2 ] ; then
@@ -67,7 +69,7 @@ build_libreoffice () {
 			exit
 		fi
 
-		make | tee -a ${LOG_DIR}/core-${LOC_VERSION}.log 2>&1
+		make 2>&1 | tee -a ${LOG_DIR}/core-${LOC_VERSION}.log
 		if [ $? -eq 2 ] ; then
 			echo
 			echo "ERROR: see ${LOG_DIR}/core-${LOC_VERSION}.log!"
@@ -76,7 +78,7 @@ build_libreoffice () {
 			exit
 		fi
 
-		make check | tee -a ${LOG_DIR}/core-${LOC_VERSION}.log 2>&1
+		make -k check 2>&1 | tee -a ${LOG_DIR}/core-${LOC_VERSION}.log
 		if [ $? -eq 2 ] ; then
 			echo
 			echo "ERROR: see ${LOG_DIR}/core-${LOC_VERSION}.log!"
@@ -85,8 +87,8 @@ build_libreoffice () {
 			exit
 		fi
 
-		sudo make install | tee -a ${LOG_DIR}/core-${LOC_VERSION}.log 2>&1
-		sudo make install DESTDIR="${BUILD_DIR}/install" | tee -a ${LOG_DIR}/core-${LOC_VERSION}.log 2>&1
+		sudo make install 2>&1 | tee -a ${LOG_DIR}/core-${LOC_VERSION}.log
+		sudo make install DESTDIR="${BUILD_DIR}/install" 2>&1 | tee -a ${LOG_DIR}/core-${LOC_VERSION}.log
 
 		sudo tar -C ${BUILD_DIR}/install${LOOL_PREFIX}/ -cvJf ${PKG_DIR}/core-${LOC_VERSION}.tar.xz .
 

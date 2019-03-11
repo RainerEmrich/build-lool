@@ -2,7 +2,7 @@
 #
 # Configuration variables for building libreoffice online.
 #
-# Copyright (C) 2017-2018 Rainer Emrich, <rainer@emrich-ebersheim.de>
+# Copyright (C) 2017-2019 Rainer Emrich, <rainer@emrich-ebersheim.de>
 #
 # This file is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,17 +20,17 @@
 #
 # Define poco version to use.
 
-POCO_VERSION="1.8.1"
+POCO_VERSION="1.9.0"
 
 #
 # Define libreoffice core version to use.
 
-LOC_VERSION="cp-5.3-40"
+LOC_VERSION="cp-5.3-58"
 
 #
 # Define libreoffice online version to use.
 
-LOOL_VERSION="3.1-rc2"
+LOOL_VERSION="3.4.0-final"
 
 #
 # Define libreoffice prefix, should be /opt/lool.
