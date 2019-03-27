@@ -35,11 +35,13 @@ build_libreoffice () {
 			sudo /bin/rm -rf ${BUILD_DIR}/core-*
 		fi
 
-		cd ${BUILD_DIR}
+		cd ${SRC_DIR}/core
 
-		/bin/cp -a ${SRC_DIR}/core/core core-${LOC_VERSION}
+		git worktree prune
+		git worktree add --detach ${BUILD_DIR}/core-${LOC_VERSION} master
 
-		cd core-${LOC_VERSION}
+		cd ${BUILD_DIR}/core-${LOC_VERSION}
+
 		git checkout tags/${LOC_VERSION}
 
 		echo "lo_sources_ver=${LOC_VERSION}" >sources.ver

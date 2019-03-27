@@ -38,11 +38,12 @@ build_online () {
 		if [ -d ${LOOL_PREFIX}/share ] ; then sudo /bin/rm -rf ${LOOL_PREFIX}/share ; fi
 		if [ -d ${LOOL_PREFIX}/var/www ] ; then sudo /bin/rm -rf ${LOOL_PREFIX}/var/www ; fi
 
-		cd ${BUILD_DIR}
+		cd ${SRC_DIR}/online
 
-		/bin/cp -a ${SRC_DIR}/online/online online-${LOOL_VERSION}
+		git worktree add --detach ${BUILD_DIR}/online-${LOOL_VERSION} master
 
-		cd online-${LOOL_VERSION}
+		cd ${BUILD_DIR}/online-${LOOL_VERSION}
+
 		git checkout tags/${LOOL_VERSION}
 
 		sed --in-place "s#POCOLIBDIRS=\"/usr/local/lib /opt/poco/lib\"#POCOLIBDIRS=\"${POCO_PREFIX}/lib\"#" loolwsd-systemplate-setup
@@ -114,6 +115,9 @@ build_online () {
 		cd ${BUILD_DIR}
 
 		sudo /bin/rm -rf online-${LOOL_VERSION}
+
+		cd ${SRC_DIR}/online
+		git worktree prune
 
 		cd ${START_DIR}
 
