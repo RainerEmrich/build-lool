@@ -40,7 +40,7 @@ upgrade_system () {
 
 		sudo apt-get build-dep libreoffice -y
 
-		sudo apt-get install libiodbc2 libiodbc2-dev -y
+		sudo apt-get install libiodbc2 libiodbc2-dev uuid-runtime gnupg2 -y
 
 		sudo apt-get install libcunit1 libcunit1-dev libcap-dev python-polib python3-polib -y
 
