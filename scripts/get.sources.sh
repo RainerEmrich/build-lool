@@ -34,12 +34,12 @@ get_sources () {
 	if [ ! -f "poco-${POCO_VERSION}-all.tar.gz" ] ; then wget https://pocoproject.org/releases/poco-${POCO_RELEASE}/poco-${POCO_VERSION}-all.tar.gz ; fi
 
 	cd ${SRC_DIR}
-	if [ ! -d "core" ] ; then git clone https://github.com/LibreOffice/core.git ; fi
+	if [ ! -d "core/.git" ] ; then git clone https://github.com/LibreOffice/core.git ; fi
 	cd core
 	git fetch --all --tags --prune
 
 	cd ${SRC_DIR}
-	if [ ! -d "online" ] ; then git clone https://github.com/LibreOffice/online.git ; fi
+	if [ ! -d "online/.git" ] ; then git clone https://github.com/LibreOffice/online.git ; fi
 	cd online
 	git fetch --all --tags --prune
 
