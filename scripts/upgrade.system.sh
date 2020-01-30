@@ -71,6 +71,13 @@ upgrade_system () {
 		Ubuntu)
 			case ${DIST_RELEASE} in
 			16.04)
+				sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+				sudo apt-get update
+				sudo apt-get dist-upgrade
+				sudo apt-get install gcc-7 g++-7 gcc-7-locales gcc-7-doc libstdc++-7-doc
+				sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 100 --slave /usr/bin/g++ g++ /usr/bin/g++-5
+				sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 50 --slave /usr/bin/g++ g++ /usr/bin/g++-7
+				sudo update-alternatives --config gcc
 				sudo apt-get install npm -y
 				sudo npm cache clean
 				sudo npm install -g n
