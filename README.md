@@ -38,7 +38,7 @@ You are restricted by the available system resources anyway.
 
 You may define different versions for poco, libreoffice core and
 libreoffice online. The following software package combinations are
-tested and known to work:
+tested and known to work, at least on Ubuntu:
 
 Package            | version
 -------------------|---------------------
@@ -55,20 +55,20 @@ libreoffice online | 3.1-final
 Package            | version
 -------------------|---------------------
 poco               | 1.9.0
-libreoffice core   | cp-5.3-47
-libreoffice online | cd-3.2.2-2
-
-Package            | version
--------------------|---------------------
-poco               | 1.9.0
 libreoffice core   | cp-5.3-58
 libreoffice online | cd-3.4.0-final
 
 Package            | version
 -------------------|---------------------
 poco               | 1.9.0
-libreoffice core   | cp-6.0-25
-libreoffice online | cp-4.0.1-1
+libreoffice core   | cp-6.0-29-20200120
+libreoffice online | cp-4.0.10-1
+
+Package            | version
+-------------------|---------------------
+poco               | 1.9.0
+libreoffice core   | cp-6.2-4
+libreoffice online | cp-4.2.0-4
 
 It's recommended to leave LOOL_PREFIX as "/opt/lool" and POCO_PREFIX empty.
 
