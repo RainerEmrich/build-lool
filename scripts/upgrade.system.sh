@@ -86,6 +86,7 @@ upgrade_system () {
 			18.04)
 				sudo apt-get install libzmf-dev libstaroffice-dev libglew-dev libserf-dev librdf0-dev -y
 				sudo apt-get install openjdk-8-jdk -y
+				sudo apt-get install autoconf libcups2-dev libfontconfig1-dev gperf xsltproc libxml2-utils python3.6-dev libxrender-dev libxrandr-dev bison flex zip libgtk-3-dev libdbus-glib-1-dev libgtk2.0-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev ant junit4 -y
 				sudo apt-get remove openjdk-11-jdk openjdk-11-jdk-headless openjdk-11-jre openjdk-11-jre-headless -y
 				sudo curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 				sudo apt-get install nodejs -y
