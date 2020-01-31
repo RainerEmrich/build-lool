@@ -87,7 +87,8 @@ upgrade_system () {
 				sudo apt-get install libzmf-dev libstaroffice-dev libglew-dev libserf-dev librdf0-dev -y
 				sudo apt-get install openjdk-8-jdk -y
 				sudo apt-get remove openjdk-11-jdk openjdk-11-jdk-headless openjdk-11-jre openjdk-11-jre-headless -y
-				sudo apt-get install npm -y
+				sudo curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+				sudo apt-get install nodejs -y
 				sudo npm install -g n
 				sudo n stable
 				;;
