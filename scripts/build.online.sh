@@ -30,7 +30,7 @@ build_online () {
 		echo "#######################################################################################"
 		echo
 
-		LIST="loolconfig loolconvert loolforkit loolmap loolmount loolstress looltool loolwsd loolwsd-systemplate-setup"
+		LIST="loolconfig loolconvert loolforkit loolmap loolmount loolstress looltool loolwsd loolwsd-generate-proof-key loolwsd-systemplate-setup coolconfig coolconvert coolforkit coolmount coolwsd coolwsd-generate-proof-key coolwsd-systemplate-setup"
 		for BIN in ${LIST} ; do
 			if [ -f ${LOOL_PREFIX}/bin/${BIN} ] ; then sudo /bin/rm -rf ${LOOL_PREFIX}/bin/${BIN} ; fi
 		done
@@ -40,13 +40,17 @@ build_online () {
 
 		cd ${SRC_DIR}/online
 
-		git worktree add --detach ${BUILD_DIR}/online-${LOOL_VERSION} master
+		git worktree add --detach ${BUILD_DIR}/online-${LOOL_VERSION} ${LOOL_VERSION}
 
 		cd ${BUILD_DIR}/online-${LOOL_VERSION}
 
-		git checkout tags/${LOOL_VERSION}
-
-		sed --in-place "s#POCOLIBDIRS=\"/usr/local/lib /opt/poco/lib\"#POCOLIBDIRS=\"${POCO_PREFIX}/lib\"#" loolwsd-systemplate-setup
+		if [ -f coolwsd-systemplate-setup ] ; then
+			sed --in-place "s#POCOLIBDIRS=\"/usr/local/lib /opt/poco/lib\"#POCOLIBDIRS=\"${POCO_PREFIX}/lib\"#" coolwsd-systemplate-setup
+			LOOL_USER="cool"
+		else
+			sed --in-place "s#POCOLIBDIRS=\"/usr/local/lib /opt/poco/lib\"#POCOLIBDIRS=\"${POCO_PREFIX}/lib\"#" loolwsd-systemplate-setup
+			LOOL_USER="lool"
+		fi
 
 		LOC_DISTRO="$(basename $(find ${LOOL_PREFIX}/lib -maxdepth 1 -type d -name "*office"))"
 
@@ -60,9 +64,20 @@ build_online () {
 
 		./autogen.sh 2>&1 | tee ${LOG_DIR}/online-${LOOL_VERSION}.log
 
-		./configure --prefix=${LOOL_PREFIX} --with-poco-includes=${POCO_PREFIX}/include --with-poco-libs=${POCO_PREFIX}/lib --with-lokit-path=../core-${LOC_VERSION}/include \
-				--with-lo-path=${LOOL_PREFIX}/lib/${LOC_DISTRO} --with-logfile=${LOOL_PREFIX}/var/log/loolwsd/loolwsd.log --with-max-connections=${LOOL_MAX_CON} \
-				--with-max-documents=${LOOL_MAX_DOC} 2>&1 | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log
+		CONFIGURE=" ./configure --prefix=${LOOL_PREFIX} --with-poco-includes=${POCO_PREFIX}/include --with-poco-libs=${POCO_PREFIX}/lib"
+		CONFIGURE="${CONFIGURE} --with-lokit-path=../core-${LOC_VERSION}/include --with-lo-path=${LOOL_PREFIX}/lib/${LOC_DISTRO}"
+		if [ -f coolwsd-systemplate-setup ] ; then
+			CONFIGURE="${CONFIGURE} --with-logfile=${LOOL_PREFIX}/var/log/coolwsd/coolwsd.log --with-max-connections=${LOOL_MAX_CON}"
+		else
+			CONFIGURE="${CONFIGURE} --with-logfile=${LOOL_PREFIX}/var/log/loolwsd/loolwsd.log --with-max-connections=${LOOL_MAX_CON}"
+		fi
+		CONFIGURE="${CONFIGURE} --with-max-documents=${LOOL_MAX_DOC}"
+		if [[ "${LOOL_VENDOR}" != "" ]] ; then
+			CONFIGURE="${CONFIGURE} --with-vendor=\"${LOOL_VENDOR}\""
+		fi
+
+		echo "${CONFIGURE}"
+		eval ${CONFIGURE} 2>&1 | tee -a ${LOG_DIR}/online-${LOOL_VERSION}.log
 
 		case $LOOL_VERSION in
 		2.1.5-5)

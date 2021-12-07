@@ -32,10 +32,15 @@ build_package () {
 
 		cd ${START_DIR}
 
-		if [ -d ${LOOL_PREFIX}/etc/libreoffice-online ] ; then
-			LOOL_DISTRO="libreoffice-online"
-		else
+		if [ -d ${LOOL_PREFIX}/etc/loolwsd ] ; then
 			LOOL_DISTRO="loolwsd"
+			LOOL_NAME="loolwsd"
+		elif [ -d ${LOOL_PREFIX}/etc/coolwsd ] ; then
+			LOOL_DISTRO="coolwsd"
+			LOOL_NAME="coolwsd"
+		else
+			LOOL_DISTRO="libreoffice-online"
+			LOOL_NAME="loolwsd"
 		fi
 		LOC_DISTRO="$(basename $(find ${LOOL_PREFIX}/lib -maxdepth 1 -type d -name "*office"))"
 		sudo mkdir -p ${LOOL_PREFIX}/var/www
@@ -74,8 +79,8 @@ build_package () {
 			;;
 		esac
 
-		sudo chown -R root:root ${LOOL_PREFIX}/var/www/loleaflet
-		sudo chmod -R g-w,o-w ${LOOL_PREFIX}/var/www/loleaflet
+		sudo chown -R root:root ${LOOL_PREFIX}/var/www
+		sudo chmod -R g-w,o-w ${LOOL_PREFIX}/var/www
 
 		if [ -f ${LOOL_PREFIX}/var/www/loleaflet/dist/bootstrap/ie10-viewport-bug-workaround.js ] ; then
 			sudo mkdir -p ${LOOL_PREFIX}/var/www/loleaflet/dist/bootstrap/assets/js
